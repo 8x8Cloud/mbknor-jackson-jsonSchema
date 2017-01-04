@@ -1,20 +1,26 @@
 language: scala
 scala:
-  - 2.10.4
-  - 2.11.8
-  - 2.12.0
+- 2.10.4
+- 2.11.8
+- 2.12.0
 jdk:
-  - oraclejdk8
+- oraclejdk8
+env:
+  global:
+  - secure: I48Bc1B8u+7eZC/nRrDeA0KnnBv5sQLwe5+Xk7P3LSewxKyRU/RDiHLkvds9uq3Xv1m+mDJ/Spy0oVYhpNHWkczeUprfVXk/q4zt5YznqE99S1jJP+Wc/IQmuNHeoCtf7gWD91XAmL+2trN2St5p/HqzjogdvTFN/y8Ax6wbtINwoWl3dWZxzCJgdwZx5FBtjsvglF/ks+aRCrS+4PfDX/VQb3XoYml/prmNKZ14xfWkvWKoHl+6vLeVHtctxRmkrCqRQerp3012LaVbYxxmcASRbB25OZYHk5VC/H/ZWc10K2K54vjBlL5OD9teHGVD97Gv9b0TcIoicX+9iaRxrAXeANHhb6VCx5hIzlasogr9d0QbK5Sbvpn1srwboAaL0w7hnK28SUKpeTRugVS1fCGXvoI+nkmOJb0EwlJ27lzDDc05KoDrpEFF3Y+GxAYnNuMKL+mo1AhWxyawcGlC/lbZM2i/fWKzcuHkhDSzQThEvhQBSQFKHWEV+jDdITQMbzhJ3p9TFgK+X+3aVLi00R4dhqx23rTQXbnvJjLAiH16dW5mR6fWegfNbLgDPlfZcjd6Zw3TH+k1ZMiHZsHh08LliObcfJLjGYMTcIs6aiaO/FFGZjtH5P0VkHG0T3AZn4xQDF88B5gUUUNl89Sh9TtXNMZ7xmwgzuMjCtzJxfM=
+  - secure: wbl/g30kl6UMRN0mkfAJMGFWxneyL0BDQ8qhJobu823+LsVtA0kvd2Jebefr14bKgrYm4ICqGdt4K9hZXCzcYLdZhPm+jJ9AEvDpfD8I+0twK3sa3tcnNK+Q/1nqqF+puQdmzno5sumeuxj2lHOJ4wHpiVmBpCevzbMmU8/QhL69SzulP18YKotIZ5FimN8+Q3jVHLqvtIwf0TjSZ8Y16voXMHg1D8aJvsAh/aDuKU6svY9vxkju3ab/xuWWIsxF3rD7YyX7mlcfO7pfwU3xQB2y2HiS3jVnd6VGDug1qfE7ft9YhLB36w3QMAkADQXo2ovGSrZtiZDww03mAUhnovmLEu/h0ZNn2PsUslFz7trFKbawXz6inRfrhwAXpfOERqHIe7yoqHpO0nUPDw3uOT3jG5JkRYolEN3q9hgqx90Dh/dz0+n7AEnY2WLXVMpfqVtZP+3DbtIvbXX9gVSBTFsu+E5Ca3UrAI2S7FacboIFA45zC1u/yY/VLYirBtxHcFU0ar99Q6K6BEzBJQbNp2D4QAn4/2Axx/Wzd86sujNXrAw0rYqifnka4Bcc9cib9a7fvfvZ3jHEb5g78bV6s6dc2HvwFXiO9E5ZdSwu7smgUZ9+4XpAHd/kolT9ZM6hQY0Xy09as6AMCC05WiiYbZOksmwjTsc9gGQXKQHzhN4=
 script:
-  - echo "version := \"${TRAVIS_TAG}\"" > version.sbt
-  - sbt ++$TRAVIS_SCALA_VERSION clean test compile package
+- echo "version := \"${TRAVIS_TAG}\"" > version.sbt
+- sbt ++$TRAVIS_SCALA_VERSION clean test compile package
 deploy:
   provider: releases
   api_key:
     secure: lPsDiZu9XmXmKc7HSTqORIfJN6XbU48uPaLBovlGu4wLP7FQJ/JYfd/al2+XhxZPS0AVg+g4x5u1UKDvua9Yx32N5deH42UM2mI7T2zVt4G+dGf1ang1HJRS5/VEzll0j+xzI0Gwljx6zwL+J0PLOhN+1AEjFZuveZd4hUkxayQv+9xGqErjmnzt0hOnNElzpY7LuFR5aHDSwMRSsJLCgS0sW46PJVM8ZDUB8E930GBipuy2VTp5FUsim7IjqyQuH5vTVz5Jaoc7nJkCewpm+9n6xblEBvzJdLlPM/+e8BdzOVgtVse/XakOwBW1caMKtH05OlzvrNtexW5KztmaXBJeTlXDfupedEgHslBycoXCeGqfVhQ3zxNLGFquRR35yIHzOxMvU0WzgLYk/shJe7o7GPzPx6rqyashPptWoyoTyB0ExzZ1vctYMTRUb+Z/pp6Ck904YSXn1MXAZLYHBQSvAAdVoOjivmFxokjwcYPR3kzisNNlNnAjY/J0KNCcwIZi6cikhPWnCDCJcZWdBIXyUsbLKaBC0MCRcPFoiqRCqbiSpUoOhCUXzFyKLkjEu5uvv4GULjiefEhrWB0LAK+WxqHVBKtHpFWeDHUoJ6y/WfCWJTGW3Saf7baKG6iXeStLOLFlIOjxBu6XmTX97KOYekx9wtZbqIGqKKJS/MU=
   skip_cleanup: true
-  file: 
-    -  target/scala-${TRAVIS_SCALA_VERSION:0:4}/mbknor-jackson-jsonschema_${TRAVIS_SCALA_VERSION:0:4}-${TRAVIS_TAG}.jar
+  file:
+  - target/scala-${TRAVIS_SCALA_VERSION:0:4}/mbknor-jackson-jsonschema_${TRAVIS_SCALA_VERSION:0:4}-${TRAVIS_TAG}.jar
   on:
     repo: 8x8Cloud/mbknor-jackson-jsonSchema
     tags: true
+after_deploy:
+  - "[[ ! -z $TRAVIS_TAG ]] && { sbt publish; };"

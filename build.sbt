@@ -15,7 +15,16 @@ lazy val commonSettings = Seq(
     else
       Some("releases" at nexus + "service/local/staging/deploy/maven2")
   },
-  credentials += Credentials(Path.userHome / ".ivy2" / ".credentials_sonatype"),
+  (for {
+    username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+    password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+  } yield
+    credentials += Credentials(
+      "Sonatype Nexus Repository Manager",
+      "oss.sonatype.org",
+      username,
+      password)
+    ).getOrElse(credentials ++= Seq()),
   homepage := Some(url("https://github.com/mbknor/mbknor-jackson-jsonSchema")),
   licenses := Seq("MIT" -> url("https://github.com/mbknor/mbknor-jackson-jsonSchema/blob/master/LICENSE.txt")),
   startYear := Some(2016),
