@@ -23,4 +23,4 @@ deploy:
     repo: 8x8Cloud/mbknor-jackson-jsonSchema
     tags: true
 after_deploy:
-  - if [[ ! -z "$TRAVIS_TAG" ]]; then sbt publish; fi
+  - sbt publish
