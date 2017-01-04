@@ -8,13 +8,6 @@ lazy val commonSettings = Seq(
   publishMavenStyle := true,
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
-//  publishTo := {
-//    val nexus = "http://nexus.nextgentel.net/content/repositories/"
-//    if (isSnapshot.value)
-//      Some("snapshots" at nexus + "snapshots/")
-//    else
-//      Some("releases"  at nexus + "thirdparty/")
-//  },
   publishTo := {
     val nexus = "https://oss.sonatype.org/"
     if (isSnapshot.value)

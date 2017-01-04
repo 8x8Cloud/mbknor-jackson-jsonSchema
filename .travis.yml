@@ -1,8 +1,20 @@
 language: scala
 scala:
-   - 2.10.4
-   - 2.11.8
-   - 2.12.0
-
+  - 2.10.4
+  - 2.11.8
+  - 2.12.0
 jdk:
-- oraclejdk8
+  - oraclejdk8
+script:
+  - echo "version := \"${TRAVIS_TAG}\"" > version.sbt
+  - sbt ++$TRAVIS_SCALA_VERSION clean test compile package
+deploy:
+  provider: releases
+  api_key:
+    secure: lPsDiZu9XmXmKc7HSTqORIfJN6XbU48uPaLBovlGu4wLP7FQJ/JYfd/al2+XhxZPS0AVg+g4x5u1UKDvua9Yx32N5deH42UM2mI7T2zVt4G+dGf1ang1HJRS5/VEzll0j+xzI0Gwljx6zwL+J0PLOhN+1AEjFZuveZd4hUkxayQv+9xGqErjmnzt0hOnNElzpY7LuFR5aHDSwMRSsJLCgS0sW46PJVM8ZDUB8E930GBipuy2VTp5FUsim7IjqyQuH5vTVz5Jaoc7nJkCewpm+9n6xblEBvzJdLlPM/+e8BdzOVgtVse/XakOwBW1caMKtH05OlzvrNtexW5KztmaXBJeTlXDfupedEgHslBycoXCeGqfVhQ3zxNLGFquRR35yIHzOxMvU0WzgLYk/shJe7o7GPzPx6rqyashPptWoyoTyB0ExzZ1vctYMTRUb+Z/pp6Ck904YSXn1MXAZLYHBQSvAAdVoOjivmFxokjwcYPR3kzisNNlNnAjY/J0KNCcwIZi6cikhPWnCDCJcZWdBIXyUsbLKaBC0MCRcPFoiqRCqbiSpUoOhCUXzFyKLkjEu5uvv4GULjiefEhrWB0LAK+WxqHVBKtHpFWeDHUoJ6y/WfCWJTGW3Saf7baKG6iXeStLOLFlIOjxBu6XmTX97KOYekx9wtZbqIGqKKJS/MU=
+  skip_cleanup: true
+  file: 
+    -  target/scala-${TRAVIS_SCALA_VERSION:0:4}/mbknor-jackson-jsonschema_${TRAVIS_SCALA_VERSION:0:4}-${TRAVIS_TAG}.jar
+  on:
+    repo: 8x8Cloud/mbknor-jackson-jsonSchema
+    tags: true

@@ -1,12 +1,10 @@
 Jackson jsonSchema Generator
 ===================================
 [![Build Status](https://travis-ci.org/mbknor/mbknor-jackson-jsonSchema.svg)](https://travis-ci.org/mbknor/mbknor-jackson-jsonSchema)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.kjetland/mbknor-jackson-jsonschema_2.12/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cmbknor-jackson-jsonSchema)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.kjetland/mbknor-jackson-jsonschema_2.12/badge.svg)](http://search.maven.org/#search|gav|1|g:"com.kjetland"%20AND%20a:"mbknor-jackson-jsonschema_2.12")
 
 This projects aims to do a better job than the original [jackson-module-jsonSchema](https://github.com/FasterXML/jackson-module-jsonSchema)
 in generating jsonSchema from your POJOs using Jackson @Annotations.
-
-Current version: *1.0.12*
 
 **Highlights**
 
@@ -154,7 +152,7 @@ Under the hood `nullableJsonSchemaDraft4` toggles the `useOneOfForOption` and `u
 
 When support is enabled, the following types may be made nullable:
  - Use `Optional<T>` (or Scala's `Option`)
- - Use a non-optional, non-primitive type (IE: `String`, `Boolean`, `Integer` etc) 
+ - Use a non-optional, non-primitive type (IE: `String`, `Boolean`, `Integer` etc)
 
 If you've otherwise enabled support for nullable types, but need to suppress this at a per-property level, you can do this like so:
 
